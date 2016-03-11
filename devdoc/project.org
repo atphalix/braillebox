@@ -1,0 +1,36 @@
+* About this project
+
+** Requirements
+- ROCKETuC firmware and processingrocket library (for usb computer/microcontroller communication).
+- Processing version 2.0 (to run client software on computer)
+- Java SDK.(Processing is written in Java)
+- TI Launchpad equipped with a MSP430G2553 MCU ($9 brain for our project).
+- 3 pairs of earphones (to give haptic feedback in form of vibration).
+
+** How it works
+
+
+** ROCKETuC firmware to communicate with USB port
+
+mspdebug and make
+sudo aptitude install mspdebug make msp430-gcc
+ ROCKETuC with client
+binding for Processing and Java.
+https://github.com/areben/ROCKETuC
+
+TI Launchpad equipped with a MSP430G2553 MCU
+cd ROCKETuC
+mspdebug rf2500 "prog firmware/bin/ROCKETuC-serial-rocket-firmware.elf"
+to flash precompiled ROCKETuC firmware
+
+** Installing Processing 2.0
+Unfortunately ROCKETuC is not compatibe with the latest Processing 3.0+,
+ as it was written for Processing 2.0 and the newer versions are not backward compatible.
+to use the 2.0 version you need to build it from source.
+You can download my pre-built version here:https://drive.google.com/file/d/0B76hFw-C0c5RTGJTdGF5UXU1Vkk/view?usp=sharing
+
+https://github.com/processing/processing/archive/processing-2.0b6.zip
+follow official Processing build instructions here:https://github.com/processing/processing/wiki/Build-Instructions
+
+After you've installed Processing, you need to install the processingrocket library to be able to communicate easily with 
+MSP430 from Processing.
