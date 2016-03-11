@@ -19,19 +19,26 @@
  * 02111-1307 USA.  
  */
 
-/**
- * This example shows:
- * 
- * how to connect to a MCU through a serial line
- * how to configure pins for digital output (p1.0+p1.6, the internal LEDs on the Launchpad)
- * how to toggle the state of an digital output (blink the LED) 
- */
 
+/*
+ * Braille to pin mapping diagram:
+ *PIN_1_0-o o-PIN_1_3
+ *PIN_2_1-o o-PIN_1_4
+ *PIN_2_2-o o-PIN_1_5
+ *
+ */
+ 
 import rocketuc.processing.*;
 
 // our instance of the ROCKETuC API
 ROCKETuC r;
-byte pin = ROCKETuC.PIN_2_3;
+byte pin1 = ROCKETuC.PIN_1_0;
+byte pin2 = ROCKETuC.PIN_2_1;
+byte pin3 = ROCKETuC.PIN_2_2;
+byte pin4 = ROCKETuC.PIN_1_3;
+byte pin5 = ROCKETuC.PIN_1_4;
+byte pin6 = ROCKETuC.PIN_1_5;// change to pin I want to test
+//working byte pin = ROCKETuC.PIN_2_1;
 boolean on= false;
 /**
  * setup function called by processing on startup
@@ -42,9 +49,14 @@ void setup() {
     r = new ROCKETuC(this, "/dev/ttyACM0");
     
     // configure p1.0 (build in LED) as digital output, initially set HIGH
-    r.pinMode(pin, ROCKETuC.OUTPUT);
-    r.digitalWrite(pin, ROCKETuC.LOW);
-    println("OK");
+    r.pinMode(pin1, ROCKETuC.OUTPUT);
+    r.pinMode(pin2, ROCKETuC.OUTPUT);
+    r.pinMode(pin3, ROCKETuC.OUTPUT);
+    r.pinMode(pin4, ROCKETuC.OUTPUT);
+    r.pinMode(pin5, ROCKETuC.OUTPUT);
+    r.pinMode(pin6, ROCKETuC.OUTPUT);
+
+    println("initialize OK");
 
   
     
@@ -65,10 +77,20 @@ void draw() {
   try {
     // toggle p1.0 between high/low state (LED on/off)
   
-    r.digitalWrite(pin, ROCKETuC.HIGH);
+    r.digitalWrite(pin1, ROCKETuC.HIGH);
+    r.digitalWrite(pin2, ROCKETuC.HIGH);
+    r.digitalWrite(pin3, ROCKETuC.HIGH);
+    r.digitalWrite(pin4, ROCKETuC.HIGH);
+    r.digitalWrite(pin5, ROCKETuC.HIGH);
+    r.digitalWrite(pin6, ROCKETuC.HIGH);
      // wait a little 
   delay(200);
-    r.digitalWrite(pin, ROCKETuC.LOW);
+    r.digitalWrite(pin1, ROCKETuC.LOW);
+    r.digitalWrite(pin2, ROCKETuC.LOW);
+    r.digitalWrite(pin3, ROCKETuC.LOW);
+    r.digitalWrite(pin4, ROCKETuC.LOW);
+    r.digitalWrite(pin5, ROCKETuC.LOW);
+    r.digitalWrite(pin6, ROCKETuC.LOW);
     delay(200);
   }
   catch(Exception e) {
