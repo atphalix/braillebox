@@ -43,10 +43,8 @@
 
 import processing.serial.*;
 import rocketuc.processing.*;
-import ddf.minim.*;
 
-Minim minim;                    //library for playing letter sound file
-AudioPlayer lettersound;
+
 
 Serial ser_port;                // for serial port
 PFont fnt;                      // for font
@@ -59,7 +57,12 @@ String detected_port = "";
 ROCKETuC r;
 char letter = 'a';
 int wait = 200;
-
+byte pin1 = ROCKETuC.PIN_1_0;
+byte pin2 =  ROCKETuC.PIN_2_1;
+byte pin3 =  ROCKETuC.PIN_2_2;
+byte pin4 =   ROCKETuC.PIN_1_3;
+byte pin5 =   ROCKETuC.PIN_1_4;
+byte pin6 =   ROCKETuC.PIN_1_5;
 /**
  * setup function called by processing on startup
  */
@@ -69,16 +72,16 @@ void setup() {
   textFont(createFont("Arial", 36));
 
   try {
- println(Serial.list());
-
-    // get the number of detected serial ports
-    num_ports = Serial.list().length;
-    // save the current list of serial ports
-    port_list = new String[num_ports];
-    for (int i = 0; i < num_ports; i++) {
-        port_list[i] = Serial.list()[i];
-    }
-  minim = new Minim (this);
+   // connect to MCU
+    r = new ROCKETuC(this, "/dev/ttyACM0");
+    
+    // configure p1.0 (build in LED) as digital output, initially set HIGH
+    r.pinMode(pin1, ROCKETuC.OUTPUT);
+    r.pinMode(pin2, ROCKETuC.OUTPUT);
+    r.pinMode(pin3, ROCKETuC.OUTPUT);
+    r.pinMode(pin4, ROCKETuC.OUTPUT);
+    r.pinMode(pin5, ROCKETuC.OUTPUT);
+    r.pinMode(pin6, ROCKETuC.OUTPUT);
 
   }
   catch(Exception e) {
@@ -383,51 +386,7 @@ void vibrateKey(char k) {
  * draw is called cyclic from processing
  */
 void draw() {
-  try {
-    //moved setup here to be run only once the serial is determined
-     // see if Launchpad was plugged in
-    if ((Serial.list().length > num_ports) && !device_detected) {
-        device_detected = true;
-        // determine which port the device was plugge into
-        boolean str_match = false;
-        if (num_ports == 0) {
-            detected_port = Serial.list()[0];
-        }
-        else {
-            for (int i = 0; i < Serial.list().length; i++) {  // go through the current port list
-                for (int j = 0; j < num_ports; j++) {             // go through the saved port list
-                    if (Serial.list()[i].equals(port_list[j])) {
-                        break;
-                    }
-                    if (j == (num_ports - 1)) {
-                        str_match = true;
-                        detected_port = Serial.list()[i];
-                    }
-                }
-            }
-        }
-    }
-     
 
-    // calculate and display serial port name
-    if (device_detected) {
-     
-    // connect to MCU
-    r = new ROCKETuC(this, detected_port);
-   // setup pins
-    // configure digital output
-    // PIN_1_1 and PIN_1_2 are reserved for serial UART!
-
-    r.pinMode(ROCKETuC.PIN_1_0, ROCKETuC.OUTPUT);
-    r.pinMode(ROCKETuC.PIN_2_1, ROCKETuC.OUTPUT);
-    r.pinMode(ROCKETuC.PIN_2_2, ROCKETuC.OUTPUT);
-    r.pinMode(ROCKETuC.PIN_1_3, ROCKETuC.OUTPUT);
-    r.pinMode(ROCKETuC.PIN_1_4, ROCKETuC.OUTPUT);
-    r.pinMode(ROCKETuC.PIN_1_5, ROCKETuC.OUTPUT);
-    deviceready = true;
-    println("Initilized ROCKETuC pins");
-
-       }
 
    background(0); // Set background to black
 
@@ -435,13 +394,8 @@ void draw() {
   textSize(100);
   text(letter, 100, 128);
    vibrateKey(letter);
-    } catch(Exception e) {
-    // If something goes wrong while communication with the MCU
-    // the catch block will be processed. Here the error handling
-    // should be done.
-    println(e.getMessage());
-  exit();
-  }
+
+ 
  
   }
  
@@ -455,9 +409,6 @@ void keyPressed() {
   if( key >= 'A' && key <= 'z' || key >= 0 && key <= 9) {
        letter = key;
      String s ="" + key;
-  lettersound = minim.loadFile ("sound-fr/"+s+".wav");
-  lettersound.rewind();
-  lettersound.play();
  
     }
     // Write the letter to the console for debugging
@@ -475,8 +426,7 @@ void keyPressed() {
 //stop is called when you hit stop on processing. Just leave this here
 void stop()
 {
-  lettersound.close();
-  minim.stop();
+ 
   resetKey();
   super.stop();
 }
