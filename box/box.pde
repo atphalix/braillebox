@@ -96,7 +96,7 @@ void setup() {
 void resetKey() {
    try {
      //wait 1/2 second before displaying another letter
-     delay(500);
+     delay(600);
     //turn off all pins before displaying letter
     r.digitalWrite(ROCKETuC.PIN_1_0, ROCKETuC.LOW);
     r.digitalWrite(ROCKETuC.PIN_2_1, ROCKETuC.LOW);
@@ -116,7 +116,7 @@ void resetKey() {
 
 void vibrateKey(char k) {
    try {
-     if (deviceready){ //run only when the MCU is ready
+    
      k = Character.toLowerCase(k);
    switch (k) {
      case 'a' :
@@ -366,9 +366,9 @@ void vibrateKey(char k) {
          r.digitalWrite(ROCKETuC.PIN_1_3, ROCKETuC.TOGGLE);
          delay(wait);
       break;*/
-       default :resetKey();
+
       
-   }
+   
      }
    }
     catch(Exception e) {
@@ -404,6 +404,7 @@ void draw() {
 
 void keyPressed() {
   try{
+    resetKey();// turn off all keys to refresh screen
   // The variable "key" always contains the value
   // of the most recent key pressed.
   if( key >= 'A' && key <= 'z' || key >= 0 && key <= 9) {
