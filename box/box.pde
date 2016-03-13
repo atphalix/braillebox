@@ -44,7 +44,26 @@
 import processing.serial.*;
 import rocketuc.processing.*;
 
+//elipse coordinates
+int x1 = 50;
+int y1 = 50;
 
+int x2 = 50;
+int y2 = y1+50;
+
+int x3 = 50;
+int y3 = 150;
+
+int x4 = x1+50;
+int y4 = 50;
+
+int x5 = x1+50;
+int y5 = y1+50;
+
+int x6 = x1+50;
+int y6 = 150;
+
+int diameter = 38;
 
 Serial ser_port;                // for serial port
 PFont fnt;                      // for font
@@ -68,6 +87,7 @@ byte pin6 =   ROCKETuC.PIN_1_5;
  */
 void setup() {
   size(256, 256);
+  fill(102);
   // Create the font
   textFont(createFont("Arial", 36));
 
@@ -122,34 +142,47 @@ void vibrateKey(char k) {
      case 'a' :
          r.digitalWrite(ROCKETuC.PIN_1_0, ROCKETuC.TOGGLE);
          delay(wait);
+          ellipse(x1, y1, diameter, diameter);
       break;
      case 'b' :
             // vibrate only pins that need to vibrate :-)
          r.digitalWrite(ROCKETuC.PIN_1_0, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_2_1, ROCKETuC.TOGGLE);
+          ellipse(x1, y1, diameter, diameter);
+	  ellipse(x2, y2, diameter, diameter);
         // wait a little
       delay(wait);
             break;
      case 'c' :
          r.digitalWrite(ROCKETuC.PIN_1_0, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_1_3, ROCKETuC.TOGGLE);
+	 ellipse(x1, y1, diameter, diameter);
+	 ellipse(x4, y4, diameter, diameter);
          delay(wait);
       break;
       case 'd' :
          r.digitalWrite(ROCKETuC.PIN_1_0, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_1_3, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_1_4, ROCKETuC.TOGGLE);
+         ellipse(x1, y1, diameter, diameter);
+	 ellipse(x4, y4, diameter, diameter);
+	 ellipse(x5, y5, diameter, diameter);
          delay(wait);
       break;
       case 'e' :
          r.digitalWrite(ROCKETuC.PIN_1_0, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_1_4, ROCKETuC.TOGGLE);
+	 ellipse(x1, y1, diameter, diameter);
+	 ellipse(x5, y5, diameter, diameter);
          delay(wait);
       break;
       case 'f' :
          r.digitalWrite(ROCKETuC.PIN_1_0, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_1_3, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_2_1, ROCKETuC.TOGGLE);
+	 ellipse(x1, y1, diameter, diameter);
+	 ellipse(x4, y4, diameter, diameter);
+	 ellipse(x2, y2, diameter, diameter);
          delay(wait);
       break;
       case 'g' :
@@ -157,40 +190,60 @@ void vibrateKey(char k) {
          r.digitalWrite(ROCKETuC.PIN_1_3, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_2_1, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_1_4, ROCKETuC.TOGGLE);
+	 ellipse(x1, y1, diameter, diameter);
+	 ellipse(x4, y4, diameter, diameter);
+	 ellipse(x2, y2, diameter, diameter);
+	 ellipse(x5, y5, diameter, diameter);
          delay(wait);
       break;
       case 'h' :
          r.digitalWrite(ROCKETuC.PIN_1_0, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_2_1, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_1_4, ROCKETuC.TOGGLE);
+	 ellipse(x1, y1, diameter, diameter);
+	 ellipse(x2, y2, diameter, diameter);
+	 ellipse(x5, y5, diameter, diameter);
          delay(wait);
       break;
       case 'i' :
          r.digitalWrite(ROCKETuC.PIN_2_1, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_1_3, ROCKETuC.TOGGLE);
+	 ellipse(x2, y2, diameter, diameter);
+	 ellipse(x4, y4, diameter, diameter);
          delay(wait);
       break;
       case 'j' :
          r.digitalWrite(ROCKETuC.PIN_2_1, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_1_3, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_1_4, ROCKETuC.TOGGLE);
+	 ellipse(x2, y2, diameter, diameter);
+	 ellipse(x4, y4, diameter, diameter);
+	 ellipse(x5, y5, diameter, diameter);
          delay(wait);
       break;
       case 'k' :
          r.digitalWrite(ROCKETuC.PIN_1_0, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_2_2, ROCKETuC.TOGGLE);
+	 ellipse(x1, y1, diameter, diameter);
+	 ellipse(x3, y3, diameter, diameter);
          delay(wait);
       break;
       case 'l' :
          r.digitalWrite(ROCKETuC.PIN_1_0, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_1_3, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_2_1, ROCKETuC.TOGGLE);
+	 ellipse(x1, y1, diameter, diameter);
+	 ellipse(x4, y4, diameter, diameter);
+	 ellipse(x2, y2, diameter, diameter);
          delay(wait);
       break;
       case 'm' :
          r.digitalWrite(ROCKETuC.PIN_1_0, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_2_2, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_1_3, ROCKETuC.TOGGLE);
+	 ellipse(x1, y1, diameter, diameter);
+	 ellipse(x3, y3, diameter, diameter);
+	 ellipse(x4, y4, diameter, diameter);
          delay(wait);
       break;
       case 'n' :
@@ -198,12 +251,18 @@ void vibrateKey(char k) {
          r.digitalWrite(ROCKETuC.PIN_1_3, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_1_4, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_2_2, ROCKETuC.TOGGLE);
+	 ellipse(x1, y1, diameter, diameter);
+	 ellipse(x4, y4, diameter, diameter);
+	 ellipse(x3, y3, diameter, diameter);
          delay(wait);
       break;
       case 'o' :
          r.digitalWrite(ROCKETuC.PIN_1_0, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_1_4, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_2_1, ROCKETuC.TOGGLE);
+	 ellipse(x1, y1, diameter, diameter);
+	 ellipse(x5, y5, diameter, diameter);
+	 ellipse(x2, y2, diameter, diameter);
          delay(wait);
       break;
       case 'p' :
@@ -211,6 +270,10 @@ void vibrateKey(char k) {
          r.digitalWrite(ROCKETuC.PIN_1_3, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_2_1, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_2_2, ROCKETuC.TOGGLE);
+	 ellipse(x1, y1, diameter, diameter);
+	 ellipse(x4, y4, diameter, diameter);
+	 ellipse(x2, y2, diameter, diameter);
+	 ellipse(x3, y3, diameter, diameter);
          delay(wait);
       break;
       case 'r' :
@@ -218,6 +281,10 @@ void vibrateKey(char k) {
          r.digitalWrite(ROCKETuC.PIN_2_1, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_1_4, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_2_2, ROCKETuC.TOGGLE);
+	 ellipse(x1, y1, diameter, diameter);
+	 ellipse(x2, y2, diameter, diameter);
+	 ellipse(x5, y5, diameter, diameter);
+	 ellipse(x1, y3, diameter, diameter);
          delay(wait);
       break;
       case 'q' :
@@ -226,12 +293,19 @@ void vibrateKey(char k) {
          r.digitalWrite(ROCKETuC.PIN_1_3, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_1_4, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_2_2, ROCKETuC.TOGGLE);
+	 ellipse(x1, y1, diameter, diameter);
+	 ellipse(x2, y2, diameter, diameter);
+	 ellipse(x4, y4, diameter, diameter);
+	 ellipse(x3, y3, diameter, diameter);
          delay(wait);
       break;
       case 's' :
          r.digitalWrite(ROCKETuC.PIN_1_3, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_2_1, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_2_2, ROCKETuC.TOGGLE);
+	 ellipse(x4, y4, diameter, diameter);
+	 ellipse(x2, y2, diameter, diameter);
+	 ellipse(x3, y3, diameter, diameter);
          delay(wait);
       break;
       case 't' :
@@ -239,12 +313,19 @@ void vibrateKey(char k) {
          r.digitalWrite(ROCKETuC.PIN_2_1, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_1_4, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_2_2, ROCKETuC.TOGGLE);
+	 ellipse(x4, y4, diameter, diameter);
+	 ellipse(x2, y2, diameter, diameter);
+	 ellipse(x5, y5, diameter, diameter);
+	 ellipse(x3, y3, diameter, diameter);
          delay(wait);
       break;
       case 'u' :
          r.digitalWrite(ROCKETuC.PIN_1_0, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_2_2, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_1_5, ROCKETuC.TOGGLE);
+	 ellipse(x1, y1, diameter, diameter);
+	 ellipse(x3, y3, diameter, diameter);
+	 ellipse(x6, y6, diameter, diameter);
          delay(wait);
       break;
       case 'v' :
@@ -252,6 +333,10 @@ void vibrateKey(char k) {
          r.digitalWrite(ROCKETuC.PIN_2_1, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_2_2, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_1_5, ROCKETuC.TOGGLE);
+	 ellipse(x1, y1, diameter, diameter);
+	 ellipse(x2, y2, diameter, diameter);
+	 ellipse(x3, y3, diameter, diameter);
+	 ellipse(x6, y6, diameter, diameter);
          delay(wait);
       break;
       case 'w' :
@@ -259,6 +344,10 @@ void vibrateKey(char k) {
          r.digitalWrite(ROCKETuC.PIN_1_3, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_1_4, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_1_5, ROCKETuC.TOGGLE);
+	 ellipse(x2, y2, diameter, diameter);
+	 ellipse(x4, y4, diameter, diameter);
+	 ellipse(x5, y5, diameter, diameter);
+	 ellipse(x6, y6, diameter, diameter);
          delay(wait);
       break;
       case 'x' :
@@ -266,6 +355,10 @@ void vibrateKey(char k) {
          r.digitalWrite(ROCKETuC.PIN_1_3, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_2_2, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_1_5, ROCKETuC.TOGGLE);
+	 ellipse(x1, y1, diameter, diameter);
+	 ellipse(x4, y4, diameter, diameter);
+	 ellipse(x3, y3, diameter, diameter);
+	 ellipse(x6, y6, diameter, diameter);
          delay(wait);
       break;
       case 'y' :
@@ -274,6 +367,10 @@ void vibrateKey(char k) {
          r.digitalWrite(ROCKETuC.PIN_1_4, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_2_2, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_1_5, ROCKETuC.TOGGLE);
+	 ellipse(x1, y1, diameter, diameter);
+	 ellipse(x4, y4, diameter, diameter);
+	 ellipse(x3, y3, diameter, diameter);
+	 ellipse(x6, y6, diameter, diameter);
          delay(wait);
       break;
       case 'z' :
@@ -281,92 +378,12 @@ void vibrateKey(char k) {
          r.digitalWrite(ROCKETuC.PIN_1_4, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_1_5, ROCKETuC.TOGGLE);
          r.digitalWrite(ROCKETuC.PIN_2_2, ROCKETuC.TOGGLE);
+	 ellipse(x1, y1, diameter, diameter);
+	 ellipse(x5, y5, diameter, diameter);
+	 ellipse(x6, y6, diameter, diameter);
+	 ellipse(x3, y3, diameter, diameter);
          delay(wait);
       break;
-  /*    case '#' :
-         r.digitalWrite(ROCKETuC.PIN_1_4, ROCKETuC.TOGGLE);
-         r.digitalWrite(ROCKETuC.PIN_1_3, ROCKETuC.TOGGLE);
-         r.digitalWrite(ROCKETuC.PIN_1_5, ROCKETuC.TOGGLE);
-         r.digitalWrite(ROCKETuC.PIN_2_2, ROCKETuC.TOGGLE);
-         delay(wait);
-      break;*/
-      case '0' :
-         r.digitalWrite(ROCKETuC.PIN_1_4, ROCKETuC.TOGGLE);
-         r.digitalWrite(ROCKETuC.PIN_1_3, ROCKETuC.TOGGLE);
-         r.digitalWrite(ROCKETuC.PIN_2_1, ROCKETuC.TOGGLE);
-         delay(wait);
-      break;
-      case '1' :
-         r.digitalWrite(ROCKETuC.PIN_1_0, ROCKETuC.TOGGLE);
-         delay(wait);
-      break;
-      case '2' :
-         r.digitalWrite(ROCKETuC.PIN_1_0, ROCKETuC.TOGGLE);
-         r.digitalWrite(ROCKETuC.PIN_2_1, ROCKETuC.TOGGLE);
-         delay(wait);
-      break;
-      case '3' :
-         r.digitalWrite(ROCKETuC.PIN_1_0, ROCKETuC.TOGGLE);
-         r.digitalWrite(ROCKETuC.PIN_1_3, ROCKETuC.TOGGLE);
-         delay(wait);
-      break;
-      case '4' :
-         r.digitalWrite(ROCKETuC.PIN_1_0, ROCKETuC.TOGGLE);
-         r.digitalWrite(ROCKETuC.PIN_1_3, ROCKETuC.TOGGLE);
-         r.digitalWrite(ROCKETuC.PIN_1_4, ROCKETuC.TOGGLE);
-         delay(wait);
-      break;
-      case '5' :
-         r.digitalWrite(ROCKETuC.PIN_1_0, ROCKETuC.TOGGLE);
-         r.digitalWrite(ROCKETuC.PIN_1_5, ROCKETuC.TOGGLE);
-         delay(wait);
-      break;
-      case '6' :
-         r.digitalWrite(ROCKETuC.PIN_1_0, ROCKETuC.TOGGLE);
-         r.digitalWrite(ROCKETuC.PIN_1_3, ROCKETuC.TOGGLE);
-         r.digitalWrite(ROCKETuC.PIN_2_1, ROCKETuC.TOGGLE);
-         delay(wait);
-      break;
-        case '7' :
-         r.digitalWrite(ROCKETuC.PIN_1_0, ROCKETuC.TOGGLE);
-         r.digitalWrite(ROCKETuC.PIN_1_3, ROCKETuC.TOGGLE);
-         r.digitalWrite(ROCKETuC.PIN_2_1, ROCKETuC.TOGGLE);
-         r.digitalWrite(ROCKETuC.PIN_1_4, ROCKETuC.TOGGLE);
-         delay(wait);
-      break;
-        case '8' :
-         r.digitalWrite(ROCKETuC.PIN_1_0, ROCKETuC.TOGGLE);
-         r.digitalWrite(ROCKETuC.PIN_1_4, ROCKETuC.TOGGLE);
-         r.digitalWrite(ROCKETuC.PIN_2_1, ROCKETuC.TOGGLE);
-         delay(wait);
-      break;
-        case '9' :
-         r.digitalWrite(ROCKETuC.PIN_1_3, ROCKETuC.TOGGLE);
-         r.digitalWrite(ROCKETuC.PIN_2_1, ROCKETuC.TOGGLE);
-         delay(wait);
-      break;
-  /*      case '+' :
-         r.digitalWrite(ROCKETuC.PIN_2_2, ROCKETuC.TOGGLE);
-         r.digitalWrite(ROCKETuC.PIN_1_3, ROCKETuC.TOGGLE);
-         r.digitalWrite(ROCKETuC.PIN_1_5, ROCKETuC.TOGGLE);
-         delay(wait);
-      break;
-        case '_' :
-         r.digitalWrite(ROCKETuC.PIN_1_5, ROCKETuC.TOGGLE);
-         r.digitalWrite(ROCKETuC.PIN_2_2, ROCKETuC.TOGGLE);
-         delay(wait);
-      break;
-        case '*' :
-         r.digitalWrite(ROCKETuC.PIN_1_0, ROCKETuC.TOGGLE);
-         r.digitalWrite(ROCKETuC.PIN_1_5, ROCKETuC.TOGGLE);
-         delay(wait);
-      break;
-        case '/' :
-         r.digitalWrite(ROCKETuC.PIN_2_2, ROCKETuC.TOGGLE);
-         r.digitalWrite(ROCKETuC.PIN_1_3, ROCKETuC.TOGGLE);
-         delay(wait);
-      break;*/
-
       
    
      }
@@ -392,7 +409,8 @@ void draw() {
 
   // Draw the pressed keyboard letter to the center of the screen
   textSize(100);
-  text(letter, 100, 128);
+ // text(letter, 100, 128);
+ 
    vibrateKey(letter);
 
  
