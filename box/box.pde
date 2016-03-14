@@ -86,7 +86,7 @@ byte pin6 =   ROCKETuC.PIN_1_5;
  * setup function called by processing on startup
  */
 void setup() {
-  size(256, 256);
+  size(400, 256);
   fill(102);
   // Create the font
   textFont(createFont("Arial", 36));
@@ -409,7 +409,7 @@ void draw() {
 
   // Draw the pressed keyboard letter to the center of the screen
   textSize(100);
- // text(letter, 100, 128);
+  text(letter, 200, 128);
  
    vibrateKey(letter);
 
