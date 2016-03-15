@@ -82,6 +82,11 @@ byte pin3 =  ROCKETuC.PIN_2_2;
 byte pin4 =   ROCKETuC.PIN_1_3;
 byte pin5 =   ROCKETuC.PIN_1_4;
 byte pin6 =   ROCKETuC.PIN_1_5;
+
+
+color inside = color(204, 102, 0);
+color outside = color(51, 51, 51);
+
 /**
  * setup function called by processing on startup
  */
@@ -406,11 +411,19 @@ void draw() {
 
 
    background(0); // Set background to black
-
+   
+   fill(outside);
+   ellipse(x1, y1, diameter, diameter);
+   ellipse(x2, y2, diameter, diameter);
+   ellipse(x3, y3, diameter, diameter);
+   ellipse(x4, y4, diameter, diameter);
+   ellipse(x5, y5, diameter, diameter);
+   ellipse(x6, y6, diameter, diameter);
+   
   // Draw the pressed keyboard letter to the center of the screen
   textSize(100);
   text(letter, 200, 128);
- 
+ fill(inside);
    vibrateKey(letter);
 
  
