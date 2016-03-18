@@ -74,7 +74,7 @@ String detected_port = "";
 
 // our instance of the ROCKETuC USB/serial API
 ROCKETuC r;
-char letter = 'a';
+char letter = 'A';
 int wait = 200;
 byte pin1 = ROCKETuC.PIN_1_0;
 byte pin2 =  ROCKETuC.PIN_2_1;
@@ -422,6 +422,7 @@ void draw() {
    
   // Draw the pressed keyboard letter to the center of the screen
   textSize(100);
+  letter = Character.toUpperCase(letter);// uppercase letter before drawing
   text(letter, 200, 128);
  fill(inside);
    vibrateKey(letter);
